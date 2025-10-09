@@ -58,7 +58,7 @@ int main() {
 
 
 
-	cout << "1-multiplication \n2-addition \n3-substraction\n4-transposition (works on the first matrix only)\n5-determinant (works on the first matrix only)(only works with 2x2 and 3x3 matrixes)" << "\n\n";
+	cout << "1-multiplication \n2-addition \n3-substraction\n4-transposition (currently doesnt work)\n5-determinant (works on the first matrix only)(only works with 2x2 and 3x3 matrixes)" << "\n\n";
 	while (G != 1) {
 		G = 0;
 
@@ -149,9 +149,9 @@ int main() {
 		}
 		for (int i = 0; i < A; i++) {
 			cout << "\n";
-			cout << "(| ";
+			cout << "(  ";
 			for (int j = 0; j < D; j++) {
-				cout << format("{:^7}|",mas4[i][j]);
+				cout << format("{:^8} ",mas4[i][j]);
 			}
 			cout << ')';
 		}
@@ -171,9 +171,9 @@ int main() {
 		}
 		for (int i = 0; i < A; i++) {
 			cout << "\n";
-			cout << "(| ";
+			cout << "(  ";
 			for (int j = 0; j < B; j++) {
-				cout << format("{:^7}|", mas4[i][j]);
+				cout << format("{:^8} ", mas4[i][j]);
 			}
 			cout << ')';
 		}
@@ -193,9 +193,9 @@ int main() {
 		}
 		for (int i = 0; i < A; i++) {
 			cout << "\n";
-			cout << "(| ";
+			cout << "(  ";
 			for (int j = 0; j < B; j++) {
-				cout << format("{:^7}|", mas4[i][j]);
+				cout << format("{:^8} ", mas4[i][j]);
 			}
 			cout << ')';
 		}
@@ -215,9 +215,9 @@ int main() {
 		}
 		for (int i = 0; i < A; i++) {
 			cout << "\n";
-			cout << "(| ";
+			cout << "(  ";
 			for (int j = 0; j < B; j++) {
-				cout << format("{:^7}|", mas4[i][j]);
+				cout << format("{:^8} ", mas4[i][j]);
 			}
 			cout << ')';
 		}
