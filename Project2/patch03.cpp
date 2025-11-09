@@ -12,8 +12,8 @@ int main() {
 	setlocale(LC_ALL, "russian");
 	int sum1 = 0;
 	int sum2 = 0;
-	int A;
-	int B;
+	int A; //строки первой
+	int B; //столбы первой
 	int B1;
 	int G = 0;
 	int F;
@@ -27,18 +27,33 @@ int main() {
 
 
 
-	cout << "matrix 1 size" << "\n\n"; 
-	cin >> A >> B;	// ввод размеров матрицы
+	cout << "Размер первой матрицы" << "\n";
+	cout << "Количество строк\n";
+	cin >> A;
+	cout << "Количество столбцов\n";
+	cin >> B;
 	cout << "\n";
 	int B2;
 	int** mas = new int* [A]; // инициализирование "двумерного" динамического массива
 	for (int i = 0; i < A; i++) { // инициализирование A динамических массивов в "Двумерный" массив B
 		mas[i] = new int[B];
 	}
-	int C;
-	int D;
-	cout << "matrix 2 size" << "\n\n";
-	cin >> C >> D;
+
+
+
+
+	// mas - первая матрица, mas2 - вторая матрица, mas4 - натрица не выход, промежуточный массив для умножения
+
+
+
+
+	int C; // строки второй
+	int D; // столбы второй
+	cout << "Размер второй матрицы" << "\n";
+	cout << "Количество строк\n";
+	cin >> C;
+	cout << "Количество столбцов\n";
+	cin >> D;
 	cout << "\n";
 	int** mas2 = new int* [C];
 	for (int i = 0; i < C; i++) {
@@ -58,14 +73,14 @@ int main() {
 
 
 
-	cout << "1-multiplication \n2-addition \n3-substraction\n4-transposition (currently doesnt work)\n5-determinant (works on the first matrix only)(only works with 2x2 and 3x3 matrixes)" << "\n\n";
+	cout << "1-умножение \n2-сумма \n3-вычитание\n4-траспозиция\n5-нахождение детерминанта первой матрицы" << "\n\n";
 	while (G != 1) {
 		G = 0;
 
 		cin >> F;
 		cout << "\n";
 		if (F != 1 and F != 2 and F != 3 and F != 4 and F!=5) {
-			cout << "incorrect input, follow given instructions above\n";
+			cout << "Неопределённая функция. Впишите номер той функции, которая дана выше \n";
 		}
 		else {
 			G = 1;
@@ -73,23 +88,19 @@ int main() {
 	}
 
 	if (B != C and F==1) {
-		cout << "the amount of rows in the first matrix doesn't match the amount of lines in the second matrix, therefore those matrices CANNOT be multiplied";
+		cout << "Количество столбцов первой матрицы не соответсвует количеству строк второй, поэтому матрицы нельзя умножить друг на друга";
 		counter3 = 1;
 	}
 	else if (F==3 and A != C or F==3 and B != D) {
-		cout << "both of the matrices should be the same size for substruction to work";
+		cout << "Обе матрицы должны быть одного размера, чтобы произвести разность матриц";
 		counter3 = 1;
 	}
 	else if (F==2  and A != C or F==2 and B != D) {
-		cout << "both of the matrices should be the same size for sum to work";
-		counter3 = 1;
-	}
-	else if (F == 4 and A != B) {
-		cout << "the amount of rows and lines should be equal on the first matrix for transposition to work";
+		cout << "Обе матрицы должны быть одного размера, чтобы произвести сумму матриц";
 		counter3 = 1;
 	}
 	else if (F == 5 and A != B or A>=4 and B>=4) {
-		cout << "the amount of rows and lines should be equal on the first matrix\nalongside its size being below 4x4 for proccess of calculating determinant to work";
+		cout << "Количество строк и линий в первой матрицы должно быть одининаковым для того, чтобы можно было найти детерминант\n(матрица так-же должна быть меньше 4x4";
 		counter3 = 1;
 	}
 
@@ -100,7 +111,7 @@ int main() {
 	//ввод1 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-	cout << "matrix 1 input" << "\n\n";
+	cout << "Ввод элементов первой матрицы" << "\n\n";
 	for (int i = 0; i < A; i++) {
 		for (int j = 0; j < B; j++) {
 			cin >> B1;
@@ -113,7 +124,7 @@ int main() {
 	//ввод2 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	if (F==1 or F==2 or F==3) {
-		cout << "matrix 2 input" << "\n\n";
+		cout << "Ввод элементов второй матрицы" << "\n\n";
 
 		for (int i = 0; i < C; i++) {
 			for (int j = 0; j < D; j++) {
@@ -205,24 +216,17 @@ int main() {
 
 	//траспонированние ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
 	if (F == 4) {
-		for (int i = 0; i < A; i++) {
-			for (int j = 0; j < B; j++) {
-				mas4[i][j] = mas[j][i];
-			}
-		}
-		for (int i = 0; i < A; i++) {
+		for (int i = 0; i < B; i++) {
 			cout << "\n";
 			cout << "(  ";
-			for (int j = 0; j < B; j++) {
-				cout << format("{:^8} ", mas4[i][j]);
+			for (int j = 0; j < A; j++) {
+				cout << format("{:^8} ", mas[j][i]);
 			}
 			cout << ')';
 		}
 	}
-
+	
 
 
 	//определитель ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
